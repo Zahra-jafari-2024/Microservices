@@ -1,0 +1,50 @@
+services:
+
+  postgres:
+    image: postgres
+    container_name: postgr
+    environment:
+      POSTGRES_PASSWORD: 1234 
+      POSTGRES_USER: db_user
+      POSTGRES_DB: db
+    networks:
+      - mynetwork
+    volumes:
+      - postgres_data:/var/lib/postgresql/data 
+  
+
+  webapp:
+    image: ai_web_app
+    container_name: webapp
+    networks:
+      - mynetwork
+    ports:
+      - "8080:5000"
+    volumes:
+      - ".:/myapp"
+    depends_on:
+      - postgres  
+
+
+  api_app:
+    image: appapi
+    container_name: apiapp
+    networks:
+      - mynetwork
+    ports:
+      - "8000:8000"
+    volumes:
+      - ".:/app"
+
+
+
+networks: 
+  mynetwork :
+
+
+volumes:
+  postgres_data:
+
+
+
+

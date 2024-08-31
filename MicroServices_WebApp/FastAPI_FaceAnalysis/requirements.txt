@@ -1,0 +1,13 @@
+
+opencv-python-headless
+bcrypt
+pydantic
+psycopg2-binary
+pillow
+onnxruntime
+uvicorn
+scikit-image
+pyyaml
+Fastapi
+gunicorn
+python-multipart
